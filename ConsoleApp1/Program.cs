@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace ConsoleApp1
 {
@@ -7,21 +6,65 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            float minTarget = 0.015f;
-            int counter = 0;
+            Console.Write("Input triangles width: ");
+            int width = int.Parse(Console.ReadLine()) + 1;
 
-            for (float i = 1.0f; i > minTarget; i = i * 0.5f, counter++)
+            // Справа на лево
+            // Вниз вверх
+            for (int h = 0; h < width; h++)
             {
-                Console.WriteLine("1: " + i);
-                System.Threading.Thread.Sleep(150);
+                for (int w = 0; w < h; w++)
+                {
+                    Console.Write("■");
+                }
+
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            // Свеврху вниз
+            for (int h = 0; h < width; h++)
+            {
+                for (int w = width - h; w > 1; w--)
+                {
+                    Console.Write("■");
+                }
+
+                Console.WriteLine();
             }
 
-            Console.WriteLine(counter);
 
-            for (int i = 1; ; i++)
+
+            // Справа на лево
+            // Вниз вверх
+            for (int h = 0; h < width; h++)
             {
-                Console.WriteLine("2: " + i);
-                System.Threading.Thread.Sleep(50);
+                for (int w = 0; w < width - h - 1; w++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int w = 0; w < h; w++)
+            {
+                    Console.Write("■");
+            }
+
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            // Свеврху вниз
+            for (int h = 0; h < width; h++)
+            {
+                for (int w = 0; w < h; w++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int w = width - h; w > 1; w--)
+            {
+                    Console.Write("■");
+                }
+
+                Console.WriteLine();
             }
         }
     }
