@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -6,66 +7,60 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.Write("Input triangles width: ");
-            int width = int.Parse(Console.ReadLine()) + 1;
+            // Homework Task
+            // Task 1 - Inputtable Array
+            Console.Write("Input array lenght: ");
+            int[] arr = new int[int.Parse(Console.ReadLine())];
 
-            // Справа на лево
-            // Вниз вверх
-            for (int h = 0; h < width; h++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                for (int w = 0; w < h; w++)
+                Console.Write("Input index " + i + " value: ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("\nTask 1 Result: ");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write($"{arr[i]} ");
+            }
+
+            // Task 2 - Reverse Array
+            Console.WriteLine("\n\nTask 2 (Reversed Array): ");
+            arr = arr.Reverse().ToArray();
+            for (int i = 0; i < arr.Length; i++)
                 {
-                    Console.Write("■");
-                }
-
-                Console.WriteLine();
+                Console.Write($"{arr[i]} ");
             }
-            Console.WriteLine();
-            // Свеврху вниз
-            for (int h = 0; h < width; h++)
+
+            // Task 3 - Find a Summ of Even Numbers
+            int Task3Result = 0;
+
+            for (int i = 0; i < arr.Length; i++)
             {
-                for (int w = width - h; w > 1; w--)
+                int value = arr[i];
+                if (value % 2 == 0)
                 {
-                    Console.Write("■");
+                    {
+                        Task3Result = Task3Result + value;
+                    }
                 }
-
-                Console.WriteLine();
             }
 
+            Console.WriteLine($"\n\nTask 3 Result: {Task3Result}");
 
+            // Task 4 - Find a Minimal Number in an Array
+            int Task4Result = 0;
 
-            // Справа на лево
-            // Вниз вверх
-            for (int h = 0; h < width; h++)
+            for (int i = 0; i < arr.Length; i++)
+        {
+                int value = arr[i];
+                if (Task4Result > value)
             {
-                for (int w = 0; w < width - h - 1; w++)
-                {
-                    Console.Write(" ");
+                    Task4Result = value;
                 }
-
-                for (int w = 0; w < h; w++)
-            {
-                    Console.Write("■");
             }
 
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            // Свеврху вниз
-            for (int h = 0; h < width; h++)
-            {
-                for (int w = 0; w < h; w++)
-                {
-                    Console.Write(" ");
-                }
-
-                for (int w = width - h; w > 1; w--)
-            {
-                    Console.Write("■");
-                }
-
-                Console.WriteLine();
-            }
+            Console.WriteLine($"\nTask 4 Result (Minimal Number in an Array): {Task4Result}");
         }
     }
 }
